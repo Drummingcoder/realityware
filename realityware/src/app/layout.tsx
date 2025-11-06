@@ -26,19 +26,18 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
         <div className="min-h-screen flex">
-          <aside className="w-72 bg-[#bf6622] border-green-200 border p-4 sticky top-10">
-            <nav className="h-full flex flex-col justify-between">
-              <div className="bg-white">Realityware</div>
-              <ul className="">
-                <li className=""><a href="/">Hub</a></li>
-                <li className=""><a href="/gallery">Gallery</a></li>
-                <li className=""><a href="/projects">Projects</a></li>
-                <li className=""><a href="/voting">Voting</a></li>
-                <li className=""><a href="/store">Store</a></li>
-                <li className=""><a href="/world">World</a></li>
+          <aside className="w-72 bg-[#c7c2b5] border-green-500 border p-4 sticky top-10">
+            <nav className="h-full flex flex-col text-black text-center space-y-4">
+              <div className="text-3xl">Realityware</div> 
+              <ul className="text-xl">
+                <li className="my-8"><a href="/hub">Hub</a></li>
+                <li className="my-8"><a href="/gallery">Gallery</a></li>
+                <li className="my-8"><a href="/projects">Projects</a></li>
+                <li className="my-8"><a href="/voting">Voting</a></li>
+                <li className="my-8"><a href="/store">Store</a></li>
+                <li className="my-8"><a href="/world">World</a></li>
               </ul>
               <div className=""><a href="/profile">Profile</a></div>
-              <div className=""><a href="/signout">Sign out</a></div>
             </nav>
           </aside>
 
