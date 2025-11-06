@@ -1,65 +1,138 @@
-import Image from "next/image";
+import React from 'react';
 
-export default function Home() {
+const ExternalLinkIcon = (props) => (
+  <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+    <polyline points="15 3 21 3 21 9"></polyline>
+    <line x1="10" y1="14" x2="21" y2="3"></line>
+  </svg>
+);
+
+const CodeIcon = (props) => (
+  <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="16 18 22 12 16 6"></polyline>
+    <polyline points="8 6 2 12 8 18"></polyline>
+  </svg>
+);
+
+export default function HubPage() {
+  // Placeholder data
+  const teamStats = {
+    hours: 1234,
+    commits: 5678,
+    additions: 123456,
+    deletions: 78901,
+  };
+
+  const teammates = [
+    { name: 'Youssef', hours: 200, isActive: true },
+    { name: 'Ismail', hours: 200, isActive: false },
+    { name: 'ShadowLight', hours: 200, isActive: true },
+    { name: 'Eva', hours: 200, isActive: false },
+    { name: 'Keyaan', hours: 200, isActive: true },
+    { name: 'Hastnat', hours: 200, isActive: true }
+  ];
+
+  const projects = [
+    {
+      name: 'meow mraow meow meow',
+      description: 'meow mraow meow meow meow mraow meow meow meow mraow meow meow',
+      pageUrl: '#',
+      repoUrl: '#',
+    },
+       {
+      name: 'meow mraow meow meow mraow' ,
+      description: 'meow mraow meow meow meow mraow meow meow meow mraow meow meow',
+      pageUrl: '#',
+      repoUrl: '#',
+    },
+        {
+      name: 'meow mraow meow meow mrp',
+      description: 'meow mraow meow meow meow mraow meow meow meow mraow meow meow',
+      pageUrl: '#',
+      repoUrl: '#',
+    },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            Working on it!
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to oof{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="text-foreground space-y-8">
+      {/* thats here where we see the team stats and the list of teams, and uh, maybe replace the team stats with just our own stats ? idk */}
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        {/* the stats where we see what the team have done so far */}
+        <div className="lg:col-span-2 bg-background/50 p-6 rounded-xl shadow-md flex flex-col border-2 border-neutral h-full overflow-hidden">
+          <h2 className="text-2xl font-bold mb-4 text-primary">Team Stats</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-grow overflow-y-auto">
+            <div className="bg-background/50 p-4 rounded-xl shadow-md border-2 border-neutral">
+              <p className="text-sm text-neutral">Hours Worked</p>
+              <p className="text-3xl font-semibold">{teamStats.hours.toLocaleString()}</p>
+            </div>
+            <div className="bg-background/50 p-4 rounded-xl shadow-md border-2 border-neutral">
+              <p className="text-sm text-neutral">Commits</p>
+              <p className="text-3xl font-semibold">{teamStats.commits.toLocaleString()}</p>
+            </div>
+            <div className="bg-background/50 p-4 rounded-xl shadow-md border-2 border-neutral">
+              <p className="text-sm text-neutral">Additions</p>
+              <p className="text-3xl font-semibold text-green-500">{`+${teamStats.additions.toLocaleString()}`}</p>
+            </div>
+            <div className="bg-background/50 p-4 rounded-xl shadow-md border-2 border-neutral">
+              <p className="text-sm text-neutral">Deletions</p>
+              <p className="text-3xl font-semibold text-red-500">{`-${teamStats.deletions.toLocaleString()}`}</p>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* here there is a list of each member of the team */}
+        <div className="lg:col-span-2 bg-background/50 p-6 rounded-xl shadow-md flex flex-col max-h-full overflow-hidden border-2 border-neutral">
+          <h2 className="text-2xl font-bold mb-4 text-primary">Our Team</h2>
+          <div className="flex-grow overflow-y-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {teammates.map((mate) => (
+                <div key={mate.name} className="flex items-center justify-between p-3 bg-background rounded-lg">
+                  <div className="flex items-center gap-4">
+                    <div className="relative">
+                      <div className="w-12 h-12 rounded-full bg-secondary"></div>
+                      <span className={`absolute bottom-0 right-0 block h-3 w-3 rounded-full ${mate.isActive ? 'bg-green-500' : 'bg-neutral'} border-2 border-background`}></span>
+                    </div>
+                    <div>
+                      <p className="font-bold">{mate.name}</p>
+                      <p className="text-sm text-neutral">{mate.hours} hours</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </main>
+      </div>
+
+      {/*  in this bottom half we see the projects */}
+      <div>
+        <h2 className="text-3xl font-bold mb-6 text-primary">Our Projects</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project) => (
+            <div key={project.name} className="bg-background/50 rounded-xl shadow-md overflow-hidden border-2 border-neutral flex flex-col">
+              <div className="h-40 bg-accent"></div> {/* place holder until we get the server running :3*/}
+              <div className="p-6 flex-grow"> 
+                <h3 className="text-xl font-bold">{project.name}</h3>
+                <p className="text-neutral mt-2 mb-4">{project.description}</p>
+              </div>
+              <div className="flex justify-end"> 
+                <div className="flex w-1/2">
+                  <a href={project.pageUrl} className="flex items-center justify-center gap-2 px-4 py-3 text-foreground hover:bg-neutral/10 transition-colors flex-1 border border-neutral border-r-0 rounded-tl-3xl">
+                    <ExternalLinkIcon className="w-4 h-4" />
+                    View Page
+                  </a>
+                  <a href={project.repoUrl} className="flex items-center justify-center gap-2 px-4 py-3 text-foreground hover:bg-neutral/10 transition-colors flex-1 border border-neutral">
+                    <CodeIcon className="w-4 h-4" />
+                    Repository
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
