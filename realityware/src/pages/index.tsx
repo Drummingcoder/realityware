@@ -35,6 +35,7 @@ export default function Home() {
   
         <main className="w-full p-8 bg-accent mx-auto">
           <section className="space-y-4">
+            <a className="block px-4 py-3 rounded text-foreground text-center no-underline" href="/gallery">RSVP here!</a>
             {/* This can be worded better */}
             <p className="block px-4 py-3 text-4xl rounded text-center underline text-black">Completing the YSWS</p>
           </section>
