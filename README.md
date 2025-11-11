@@ -1,6 +1,6 @@
 # Realityware
 Build a hardware solution to a problem in society, get a grant to build it, and more!
-This is the site of the Realityware YSWS, live at https://realityware-site-m11x2b4vf-tim-trans-projects.vercel.app (for now, that's an awful domain)!
+This is the site of the Realityware YSWS, live at https://realityware-site.vercel.app!
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
