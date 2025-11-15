@@ -20,6 +20,7 @@ const config: Config = {
         lightblack: 'var(--lightblack)',
         purple: 'var(--purple)',
         gray: 'var(--gray)',
+        lightaccent: 'var(--lightaccent)',
       },
     },
   },
