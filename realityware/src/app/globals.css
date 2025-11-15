@@ -20,6 +20,7 @@
   --lightblack: #242222;
   --gray: #cfebe840;
   --purple: #cf5fd7;
+  --red: #ff3c3c;
 }
 
 
@@ -34,6 +35,7 @@
   --color-purple: var(--purple);
   --color-gray: var(--gray);
   --color-lightaccent: var(--lightaccent);
+  --color-red: var(--red);
 }
 
 body {
