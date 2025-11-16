@@ -32,7 +32,7 @@ export default function Home() {
         </a>
       </div> */}
       <div className="min-h-screen items-center justify-center">
-        <header className="bg-gradient-to-b from-background via-background to-accent w-full mx-auto min-h-[20vh] pt-[18vh] pb-[12vw]" id="home">
+        <header className="bg-background w-full mx-auto min-h-[20vh] pt-[18vh] pb-[12vw]" id="home">
           {showTitle && (
             <div className="fixed top-0 left-0 w-full z-2 bg-background/80 backdrop-blur shadow text-left py-2 items-center flex">
               <span className="text-[calc(2vw+2vh)] font-bold text-foreground ml-[2vw] text-left">Realityware</span>
@@ -80,10 +80,10 @@ export default function Home() {
           </section>
         </header>
   
-        <main className="w-full p-8 bg-accent mx-auto" id="about">
+        <main className="w-full p-8 bg-background mx-auto" id="about">
           <section className="space-y-4">
             {/* This can be worded better */}
-            <p className="mt-[4vh] block px-[1vw] py-[2vh] text-[calc(1.6vw+3.3vh)] rounded text-center underline text-black">Completing the YSWS</p>
+            <p className="mt-[4vh] block px-[1vw] py-[2vh] text-[calc(1.6vw+3.3vh)] rounded text-center underline text-primary">Completing the YSWS</p>
           </section>
           <section className="items-center flex mt-[10vh] justify-center">
             <p className="inline-block w-[25vw] h-[42vh] px-[1vw] py-[2vh] border border-[2vw] border-gray bg-secondary rounded-lg shadow-lg rounded text-center text-lightblack text-[calc(0.9vw+1.2vh)] overflow-y-auto">Step 1: Come up with an idea! <span className="block mt-[3vh] text-[calc(0.6vw+0.9vh)] text-justify">It can be anything, as well as a solution can be built for it! The better your idea is to help society, the better reward you will get!</span></p>
@@ -222,7 +222,7 @@ export default function Home() {
           </section>
 
           <section className="flex items-center justify-center mt-[4vh] mb-[14vh]">
-            <a className="block rounded w-[22vw] h-[16vh] px-[1vw] py-[2vh] rounded text-center bg-purple text-white rounded-full justify-center flex items-center text-[calc(0.7vw+1vh)]" href="https://hackclub.slack.com/docs/T0266FRGM/F09S78K5M1P">To learn more, read our full FAQ here!</a>
+            <a className="block rounded w-[22vw] h-[16vh] px-[1vw] py-[2vh] rounded text-center bg-accent text-white rounded-full justify-center flex items-center text-[calc(0.7vw+1vh)]" href="https://hackclub.slack.com/docs/T0266FRGM/F09S78K5M1P">To learn more, read our full FAQ here!</a>
           </section>
         </main>
 
