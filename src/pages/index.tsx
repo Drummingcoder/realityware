@@ -23,6 +23,7 @@ export default function Home() {
       <Head>
         <title>Realityware</title>
         <meta name="description" content="The home page for Realityware! Doesn't show up if logged in (to be implemented)" />
+        
       </Head>
 
       {/* To be implemented once we're ready
@@ -31,14 +32,11 @@ export default function Home() {
           Sign in with Slack!
         </a>
       </div> */}
-      <div className="min-h-screen items-center justify-center">
-        <header className="bg-background w-full mx-auto min-h-[20vh] pt-[18vh] pb-[12vw]" id="home">
+      <header className="">
           {showTitle && (
             <div className="fixed top-0 left-0 w-full z-2 bg-background/80 backdrop-blur shadow text-left py-2 items-center flex">
               <span className="text-[calc(2vw+2vh)] font-bold text-foreground ml-[2vw] text-left">Realityware</span>
-              <div className="z-50 max-width max-w-xs px-[2vw]">
-                <Image src="/hackclublogo.png" alt="Hack Club logo" width={181} height={63} className="object-contain w-[calc(6vw+10vh)] h-auto" />
-              </div>
+             
               <nav className="flex flex-row items-center flex-1 z-3 mr-[2vw]">
                 <ul className="flex flex-row space-x-[3vw] ml-auto">
                   <li>
@@ -54,47 +52,86 @@ export default function Home() {
               </nav>
             </div>
           )}
-          <div className="absolute top-0 left-[38vw] z-50 max-width max-w-xs px-[4vw]">
-            <Image src="/flag-orpheus-top.png" alt="Hack Club logo" width={181} height={63} className="object-contain w-[calc(8vw+15vh)] h-auto" />
-          </div>
+          
           <nav className="absolute top-0 right-[2vw] w-full flex flex-row items-center justify-end py-4 z-50">
-            <ul className="flex flex-row space-x-[4vw]">
+            <ul className="flex flex-row space-x-[3vw]">
               <li>
-                <a href="#home" className="text-[calc(0.7vw+1.4vh)] text-foreground hover:text-accent font-bold transition underline">Home</a>
+                <a href="#home" className="text-lg text-white hover:text-accent font-medium transition">Home</a>
               </li>
               <li>
-                <a href="#about" className="text-[calc(0.7vw+1.4vh)] text-foreground hover:text-accent font-bold transition underline">About</a>
+                <a href="#about" className="text-lg text-white hover:text-accent font-medium transition">About</a>
               </li>
               <li>
-                <a href="#faq" className="text-[calc(0.7vw+1.4vh)] text-foreground hover:text-accent font-bold transition underline">FAQ</a>
+                <a href="#faq" className="text-lg text-white hover:text-accent font-medium transition">FAQ</a>
               </li>
             </ul>
           </nav>
-          <div className="flex items-center justify-center mb-[3vh] relative">
-            <h1 className="text-[calc(6vw+6vh)] font-bold text-center text-foreground flex-1">Realityware</h1>
+          </header>
+        <section className="w-full bg-foreground flex flex-col min-h-[20vh] h-screen justify-center" id="home">
+          <div className="w-full flex justify-center">
+            <Image src="/hackclubflag.png" alt="Hack Club logo" width={160} height={63} className="object-contain w-25 h-auto" />
           </div>
-          <div className="flex justify-center">
-            <p className="inline-block text-[calc(1.6vw+2vh)] mb-[2vh] text-primary text-center whitespace-wrap mx-[2vw]">Ship a solution to a problem of society, get a grant to build it!</p>
-          </div>
-          <p className="mb-[8vh] text-secondary text-center text-[calc(0.7vw+1.4vh)]">You can also get prizes like 3D printers, Raspberry Pis, and stickers!</p>
+          <h1 className=" font-bold text-center text-white font-archivo">Realityware</h1>
 
-          <section className="space-y-4 mb-[8vh] flex justify-center">
-            <a className="inline-block px-[3vw] py-[2.4vh] rounded shadow-lg text-foreground text-center text-white bg-lightaccent text-[calc(0.9vw+1vh)] hover:opacity-80 hover:bg-accent" href="/gallery">RSVP here!</a>
-          </section>
-        </header>
-  
-        <main className="w-full p-8 bg-background mx-auto" id="about">
-          <section className="space-y-4">
+          <div className="text-center space-y-6">
+              <form name="rsvpForm" method="post" className="flex justify-between w-fit mx-auto gap-x-2">
+                <input type="email" placeholder="e.g.coolperson@gmail.com" className="text-primary font-medium bg-white p-4 pr-16 box-border h-12 rounded-lg"></input>
+                <input type="submit" value="RSVP" className="text-black font-semibold text-xl bg-lightaccent px-5 rounded-lg font-archivo"></input>
+              </form>
+              
+            <p className="mx-auto w-90 max-w-[80%] text-center text-white leading-snug">Ship a solution to a problem of society, get a grant to build it! You can also get prizes like 3D printers, Raspberry Pis, and stickers!
+            </p>
+          </div>
+
+
+          <div className="absolute bottom-8 right-8 rounded-lg bg-white/20 max-w-80 p-4 pb-8 flex justify-between">
+            <p className="text-white">Launching (insert some date here), January 2026!</p>
+            <span className="inline-flex rounded-full w-4 h-4 bg-red-500"></span>
+          </div>
+        </section>
+
+        <main className="w-full bg-topbackground mx-auto" id="about">
             {/* This can be worded better */}
-            <p className="mt-[4vh] block px-[1vw] py-[2vh] text-[calc(1.6vw+3.3vh)] rounded text-center underline text-primary">Completing the YSWS</p>
-          </section>
-          <section className="items-center flex mt-[10vh] justify-center portrait:flex-col">
-            <p className="inline-block w-[25vw] h-[40vh] portrait:w-[40vw] portrait:h-[25vh] px-[1vw] py-[2vh] border border-[2vw] border-gray bg-secondary rounded-lg shadow-lg rounded text-center text-lightblack text-[calc(0.9vw+1.2vh)] overflow-y-auto">Step 1: Come up with an idea! <span className="block mt-[3vh] text-[calc(0.6vw+0.9vh)] text-justify">It can be anything, as well as a solution can be built for it! The better your idea is to help society, the better reward you will get!</span></p>
+            <h2 className="text-center my-10">HOW IT WORKS</h2>
+            <section className="px-8 lg:px-20 xl:px-30 grid grid-cols-4 grid-rows-2 gap-4">
+              <div className="p-4 border border-2 border-black bg-neutral rounded-lg shadow-lg  text-lightblack overflow-y-auto">
+                <h3 className="text-center">Step 1: Come up with an idea!</h3>
+                <p>It can be anything, as well as a solution can be built for it! The better your idea is to help society, the better reward you will earn.</p>
+              </div>
+              <div className="col-span-2 p-4 border border-2 border-black bg-neutral rounded-lg shadow-lg  text-lightblack overflow-y-auto">
+                <h3 className="text-center">Step 1: Come up with an idea!</h3>
+                <p>It can be anything, as well as a solution can be built for it! The better your idea is to help society, the better reward you will earn.</p>
+              </div>
+              <div className="p-4 border border-2 border-black bg-neutral rounded-lg shadow-lg  text-lightblack overflow-y-auto">
+                <h3 className="text-center">Step 1: Come up with an idea!</h3>
+                <p>It can be anything, as well as a solution can be built for it! The better your idea is to help society, the better reward you will earn.</p>
+              </div><div className="col-start-2 col-span-2 p-4 border border-2 border-black bg-neutral rounded-lg shadow-lg  text-lightblack overflow-y-auto">
+                <h3 className="text-center">Step 1: Come up with an idea!</h3>
+                <p>It can be anything, as well as a solution can be built for it! The better your idea is to help society, the better reward you will earn.</p>
+              </div>
+            </section>
+            <section className="w-full border-t-2 border-b-2 border-black h-30 mt-10">
+              <p>prizes</p>
+            </section>
+          {/* <section className="items-center flex mt-[10vh] justify-center portrait:flex-col">
+            <div className="p-4 border border-2 border-black bg-secondary rounded-lg shadow-lg  text-lightblack overflow-y-auto">
+              <h3 className="text-center">Step 1: Come up with an idea!</h3>
+              <p>It can be anything, as well as a solution can be built for it! The better your idea is to help society, the better reward you will earn.</p>
+            </div>
+            
             <div className="w-[8vw] h-[6vh] portrait:w-[3vw] portrait:h-[5vh] bg-lightblue flex-shrink-0"></div>
-            <p className="inline-block w-[25vw] h-[40vh] portrait:w-[40vw] portrait:h-[25vh] px-[1vw] py-[2vh] border border-[2vw] border-gray bg-foreground rounded-lg shadow-lg rounded text-center text-white text-[calc(0.9vw+1.2vh)] overflow-y-auto">Step 2: Build your project! <span className="block mt-[3vh] text-[calc(0.6vw+0.9vh)] text-justify">Design your project! Plan it out, make a CAD, and design the schematic! Then, create the code that your project would run on, and put it on GitHub!</span></p>
+            <div className="p-4 border border-2 border-black bg-secondary rounded-lg shadow-lg  text-lightblack overflow-y-auto">
+              <h3 className="text-center">Step 2: Build your project!</h3>
+              <p>Design your project! Plan it out, make a CAD, and design the schematic! Then, create the code that your project would run on, and put it on GitHub!</p>
+            </div>
             <div className="w-[8vw] h-[6vh] portrait:w-[3vw] portrait:h-[5vh] bg-lightblue flex-shrink-0"></div>
-            <p className="inline-block w-[25vw] h-[40vh] portrait:w-[40vw] portrait:h-[25vh] px-[1vw] py-[2vh] border border-[2vw] border-gray bg-primary rounded-lg shadow-lg rounded text-white text-center text-[calc(0.9vw+1.2vh)] overflow-y-auto">Step 3: Create your BOM! <span className="block mt-[3vh] text-[calc(0.6vw+0.9vh)] text-justify">Simply list out all the components and materials you will need to create your project. We will use this BOM to give you an appropriate grant!</span></p>
+  
+            <div className="p-4 border border-2 border-black bg-secondary rounded-lg shadow-lg  text-lightblack overflow-y-auto">
+              <h3 className="text-center">Step 3: Create your BOM!</h3>
+              <p>Simply list out all the components and materials you will need to create your project. We will use this BOM to give you an appropriate grant!</p>
+            </div>
           </section>
+
           <section className="flex h-[28vh] portrait:h-[5vh]">
             <div className="absolute w-[3vw] h-[9vh] portrait:h-[6vh] bg-lightblue flex-shrink-0 right-[16vw] portrait:right-[48vw] rounded-b-full z-0"></div>
             <div className="absolute w-[52vw] h-[6vh] bg-lightblue flex-shrink-0 mt-[4vh] right-[16vw] rounded-full z-1 portrait:hidden"></div>
@@ -102,25 +139,28 @@ export default function Home() {
             <div className="absolute w-[3vw] h-[24vh] bg-red flex-shrink-0 mt-[4vh] right-[32vw] rounded-t-full portrait:hidden"></div>
           </section>
           <section className="items-center flex justify-center portrait:flex-col">
-            <p className="inline-block w-[25vw] h-[40vh] portrait:w-[40vw] portrait:h-[25vh] px-[1vw] py-[2vh] border border-[2vw] border-gray bg-blue-900 rounded-lg shadow-lg rounded text-center text-white text-[calc(0.9vw+1.2vh)] overflow-y-auto z-1">Optional: Make a PCB layout! <span className="block mt-[3vh] text-[calc(0.6vw+0.9vh)] text-justify">For a chance at bigger rewards, create a PCB design for your project! This will become a part of your grant.</span></p>
+         
+            <div className="w-[25vw] h-[40vfunction Welcome(props) {
+h] portrait:w-[40vw] portrait:h-[25vh] p-4 border border-2 border-black bg-secondary rounded-lg shadow-lg  text-lightblack overflow-y-auto">
+              <h3 className="text-center">Step 3: Create your BOM!</h3>
+              <p>Simply list out all the components and materials you will need to create your project. We will use this BOM to give you an appropriate grant!</p>
+            </div>
+            
             <div className="w-[8vw] h-[6vh] portrait:w-[3vw] portrait:h-[5vh] bg-lightblue flex-shrink-0"></div>
-            <p className="inline-block w-[25vw] h-[40vh] portrait:w-[40vw] portrait:h-[25vh] px-[1vw] py-[2vh] border border-[2vw] border-gray bg-purple rounded-lg shadow-lg rounded text-lightblack text-center text-[calc(0.9vw+1.2vh)] overflow-y-auto">Step 4: Ship it! <span className="block mt-[3vh] text-[calc(0.6vw+0.9vh)] text-justify">Once you're finished, ship it to us! We'll rate your project and give you a grant to build it.</span></p>
-          </section>
-          <section className="flex h-[28vh] portrait:h-[8vh]">
-            <div className="absolute w-[3vw] h-[10vh] bg-lightblue flex-shrink-0 right-[32vw] portrait:right-[48vw] rounded-b-full"></div>
-            <div className="absolute w-[18vw] h-[6vh] bg-lightblue flex-shrink-0 mt-[4vh] right-[32vw] rounded-full z-1 portrait:hidden"></div>
-            <div className="absolute w-[3vw] h-[24vh] bg-lightblue flex-shrink-0 mt-[4vh] right-[48vw] rounded-t-full portrait:hidden"></div>
-          </section>
-          <section className="gap-[10vw] flex justify-center items-center">
-            <p className="inline-block w-[25vw] h-[40vh] portrait:w-[40vw] portrait:h-[25vh] px-[1vw] py-[2vh] border border-[2vw] border-gray bg-yellow-500 rounded-lg shadow-lg rounded text-lightblack text-center text-[calc(0.9vw+1.2vh)] overflow-y-auto z-1">Step 5: Use your grant to build your project!<span className="block mt-[3vh] text-[calc(0.6vw+0.9vh)] text-justify">The project isn't finished until it's up and working! You can win even more prizes by doing so!</span></p>
-          </section>
+             <div className="w-[25vw] h-[40vh] portrait:w-[40vw] portrait:h-[25vh] p-4 border border-2 border-black bg-secondary rounded-lg shadow-lg  text-lightblack overflow-y-auto">
+              <h3 className="text-center">Step 3: Create your BOM!</h3>
+              <p>Simply list out all the components and materials you will need to create your project. We will use this BOM to give you an appropriate grant!</p>
+            </div>
+         
+          </section> */}
+        
 
-          <section className="flex items-center justify-center max-width mt-[18vh]" id="faq">
+          <section className="bg-secondary flex flex-col items-center justify-center" id="faq">
+            <h2 className="my-10">FAQ</h2>
             <div className="relative bg-white pb-[2vh] w-[67vw] h-auto border border-black border-[0.25vw] shadow-lg rounded [clip-path:polygon(0%_0%,calc(100%-6vw)_0%,100%_6vw,100%_100%,0%_100%)]">
               <div className="absolute -top-[0.25vw] -right-[0.25vw] pointer-events-none">
                 <div className="w-[6vw] h-[6vw] border-[0.25vw] border-black"></div>
               </div>
-              <p className="relative text-center text-[calc(2vw+2vh)] underline mt-[2vh]">Frequently Asked Questions</p>
               <p
                 className="text-lightblack text-[calc(1.2vw+1vh)] mt-[6vh] ml-[2vw] cursor-pointer"
                 onClick={() => showfaq1((v) => !v)}
@@ -222,11 +262,10 @@ export default function Home() {
               )}
               <hr className="w-[63vw] mx-auto mt-[1vh]"/>
             </div>
+            <a className="block mt-10 mx-auto w-fit text-black font-semibold text-xl bg-lightaccent px-5 rounded-lg py-3 border-2 border-black" href="https://hackclub.slack.com/docs/T0266FRGM/F09S78K5M1P">LEARN MORE</a>
+
           </section>
 
-          <section className="flex items-center justify-center mt-[4vh] mb-[5vh]">
-            <a className="block rounded w-[22vw] h-[16vh] px-[1vw] py-[2vh] rounded text-center bg-accent text-white rounded-full justify-center flex items-center text-[calc(0.73vw+1vh)]" href="https://hackclub.slack.com/docs/T0266FRGM/F09S78K5M1P">To learn more, read our full FAQ here!</a>
-          </section>
         </main>
 
         <footer className="bg-neutral w-full p-[4vh] mx-auto items-center justify-center flex">
@@ -234,7 +273,6 @@ export default function Home() {
             <p className="block px-[1vw] py-[2vh] rounded text-foreground text-[calc(0.9vw+1vh)]">Built with love by members of <a href="https://hackclub.com/" className="text-blue-900 underline">Hack Club</a>! View this website's <a href="https://github.com/Drummingcoder/realityware-site" className="text-blue-900 underline">source code</a> and join our <a href="https://hackclub.com/slack/" className="text-blue-900 underline">Slack!</a></p>
           </section>
         </footer>
-      </div>
     </>
   );
 }

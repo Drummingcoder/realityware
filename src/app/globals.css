@@ -2,15 +2,15 @@
 
 /* boom, updated this , but uh, might not be the theme we wanted, but we can always change this */
 :root {
-  --background: #cbe9cb; 
+  --background: #ffffff; 
   --foreground: #44403c; 
-  --primary: #16a34a; 
-  --secondary: #5ec75f; 
-  --neutral: #d6d3d1; 
+  --primary: #009236; 
+  --secondary: #a3e6a4; 
+  --neutral: #F3F3F3; 
   --accent: #ff8127;
   --lightaccent: #ff6c03;
-  --white: #ffffff;
-  --black: #000000;
+  /* --white: #ffffff;
+  --black: #000000; */
 
   --text-light: #78716c; 
   --text-dark: #1c1917;
@@ -45,3 +45,23 @@ body {
   color: var(--foreground);
 }
 
+h1 {
+  @apply text-[calc(6vw+6vh)] font-semibold
+}
+
+h2 {
+  @apply text-6xl font-semibold
+}
+h3 {
+  @apply text-2xl font-semibold
+}
+h4 {
+  @apply text-2xl font-semibold
+}
+h5 {
+  @apply text-xl font-semibold
+}
+
+p {
+  @apply text-lg
+}

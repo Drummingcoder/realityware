@@ -1,16 +1,73 @@
-[00:00:01.347] Server  LOG      ✓ Ready in 914ms
-[00:00:08.336] Server  LOG      ○ Compiling /projects ...
-[00:00:31.136] Browser WARN    Image with src "/flag-orpheus-top.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:00:39.228] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:39.228] Browser WARN    Image with src "https://i.pinimg.com/736x/7c/5a/49/7c5a4920a5094190b777c434443e1844.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:00:49.369] Browser WARN    Image with src "https://i.pinimg.com/736x/7c/5a/49/7c5a4920a5094190b777c434443e1844.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:49.369] Browser WARN    Image with src "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTItl9l0FpxAs4VK7m-m0qxaGE2Nkp-ueO7ig&s" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:49.369] Browser WARN    Image with src "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Cd2he581EhPukyXbYF_oeJ5d2Of0ybPoEg&s" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:49.369] Browser WARN    Image with src "https://cdn.pfps.gg/banners/4674-oneshot-niko-and-rue.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:49.369] Browser WARN    Image with src "https://static.wikia.nocookie.net/xtaleunderverse4071/images/0/0d/XCharaProvisional_Remastered.png/revision/latest?cb=20210606233844" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:01:18.796] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:18.796] Browser WARN    Image with src "https://static.wikia.nocookie.net/joke-battles/images/7/77/Core%21Frisk.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:01:18.796] Browser WARN    Image with src "https://static.wikia.nocookie.net/joke-battles/images/7/77/Core%21Frisk.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:03.216] Server  LOG      ✓ Ready in 2.3s
+[00:03:47.709] Server  LOG      ✓ Compiled in 60ms
+[00:03:48.294] Browser LOG     Refreshing page data due to server-side change
+[00:03:48.294] Browser ERROR   ./src/pages/index.tsx:29:14
+Parsing ecmascript source code failed
+  27 | <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  28 | <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet"></link>
+> 29 |       </Head>
+     |              ^
+> 30 |
+     | ^
+> 31 |       {/* To be implemented once we're ready
+     | ^^^^^^^
+  32 |       <div className="fixed -top-1 right-0 z-50 max-width max-w-xs px-4 mt-8 text-center">
+  33 |         <a href="/signin" className="inline-block px-6 py-3 bg-black text-white rounded-lg shadow hover:opacity-90 transition">
+  34 |           Sign in with Slack!
+
+Expected '</', got 'jsx text (
+
+      )'
+[00:03:52.356] Server  LOG      ✓ Compiled in 47ms
+[00:03:53.291] Browser LOG     Refreshing page data due to server-side change
+[00:05:56.843] Server  LOG      ✓ Compiled in 43ms
+[00:06:24.323] Server  LOG      ✓ Compiled in 91ms
+[00:06:42.507] Server  LOG      ✓ Compiled in 50ms
+[00:06:44.530] Server  LOG      ✓ Compiled in 93ms
+[00:06:45.812] Server  LOG      ✓ Compiled in 52ms
+[00:06:46.961] Server  LOG      ✓ Compiled in 40ms
+[00:06:47.771] Server  LOG      ✓ Compiled in 39ms
+[00:06:51.082] Server  LOG      ✓ Compiled in 36ms
+[00:07:12.967] Server  LOG      ✓ Compiled in 80ms
+[00:07:29.467] Server  LOG      ✓ Compiled in 30ms
+[00:07:39.682] Server  LOG      ✓ Compiled in 35ms
+[00:07:42.069] Server  LOG      ✓ Compiled in 39ms
+[00:07:49.359] Server  LOG      ✓ Compiled in 79ms
+[00:07:51.967] Server  LOG      ✓ Compiled in 51ms
+[00:07:56.521] Server  LOG      ✓ Compiled in 40ms
+[00:08:00.703] Server  LOG      ✓ Compiled in 31ms
+[00:08:04.100] Server  LOG      ✓ Compiled in 38ms
+[00:08:39.951] Server  LOG      ✓ Compiled in 75ms
+[00:08:47.667] Server  LOG      ✓ Compiled in 45ms
+[00:09:14.502] Server  LOG      ✓ Compiled in 52ms
+[00:09:23.163] Server  LOG      ✓ Compiled in 31ms
+[00:09:28.190] Server  LOG      ✓ Compiled in 30ms
+[00:09:31.567] Server  LOG      ✓ Compiled in 84ms
+[00:09:41.985] Server  LOG      ✓ Compiled in 44ms
+[00:09:49.011] Server  LOG      ✓ Compiled in 24ms
+[00:09:49.936] Server  LOG      ✓ Compiled in 47ms
+[00:10:02.159] Server  LOG      ✓ Compiled in 87ms
+[00:11:01.946] Server  LOG      ✓ Compiled in 98ms
+[00:11:13.139] Server  LOG      ✓ Compiled in 24ms
+[00:11:22.369] Server  LOG      ✓ Compiled in 84ms
+[00:11:26.908] Server  LOG      ✓ Compiled in 88ms
+[00:11:30.109] Server  LOG      ✓ Compiled in 89ms
+[00:11:34.293] Server  LOG      ✓ Compiled in 105ms
+[00:11:59.070] Server  LOG      ✓ Compiled in 86ms
+[00:15:05.319] Server  LOG      ✓ Compiled in 19ms
+[00:15:20.827] Server  LOG      ✓ Compiled in 93ms
+[00:15:22.685] Server  LOG      ✓ Compiled in 71ms
+[00:15:23.506] Server  LOG      ✓ Compiled in 84ms
+[00:15:46.705] Server  LOG      ✓ Compiled in 36ms
+[00:16:21.962] Server  LOG      ✓ Compiled in 33ms
+[00:16:30.858] Server  LOG      ✓ Compiled in 28ms
+[00:16:33.993] Server  LOG      ✓ Compiled in 41ms
+[00:16:38.957] Server  LOG      ✓ Compiled in 28ms
+[00:16:47.578] Server  LOG      ✓ Compiled in 25ms
+[00:17:01.950] Server  LOG      ✓ Compiled in 26ms
+[00:17:04.985] Server  LOG      ✓ Compiled in 30ms
+[00:17:55.030] Server  LOG      ✓ Compiled in 57ms
+[00:17:57.653] Server  LOG      ✓ Compiled in 30ms
+[00:18:02.479] Server  LOG      ✓ Compiled in 56ms
+[00:18:09.894] Server  LOG      ✓ Compiled in 25ms
+[00:18:22.537] Server  LOG      ✓ Compiled in 67ms
