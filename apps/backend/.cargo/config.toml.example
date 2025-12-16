@@ -1,0 +1,14 @@
+[env]
+# PostgreSQL library path for diesel/libpq
+# Adjust the version number (18) to match your PostgreSQL installation
+PQ_LIB_DIR = "C:\\Program Files\\PostgreSQL\\18\\lib"
+
+[target.x86_64-pc-windows-msvc]
+# Add PostgreSQL lib directory to linker search path
+# Adjust the version number (18) to match your PostgreSQL installation
+rustflags = ["-L", "C:\\Program Files\\PostgreSQL\\18\\lib"]
+
+# Instructions for teammates:
+# 1. Copy this file to .cargo/config.toml
+# 2. Update the PostgreSQL version number to match your installation
+# 3. The .cargo/config.toml file is gitignored and stays local to your machine

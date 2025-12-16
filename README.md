@@ -1,39 +1,149 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Reality Ware Monorepo
 
-NOTE FROM YOUSSEF:
-- dont forget to "npm/bun install ."  :p
+A modern monorepo combining a Rust + Rocket backend with a Next.js + Turbopack frontend, managed with Bun.
 
-First, run the development server:
+## 📁 Structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+realityware/
+├── apps/
+│   ├── backend/        # Rust + Rocket API server
+│   │   ├── src/
+│   │   ├── migrations/
+│   │   ├── Cargo.toml
+│   │   └── Rocket.toml
+│   └── web/            # Next.js 16 + Turbopack frontend
+│       ├── src/
+│       ├── public/
+│       ├── package.json
+│       └── next.config.ts
+├── package.json        # Root workspace
+├── bunfig.toml         # Bun configuration
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Bun** 1.0.0+ ([Install](https://bun.sh))
+- **Rust** 1.70+ ([Install](https://rustup.rs))
+- **PostgreSQL** (for the database)
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Install dependencies:
+   ```bash
+   bun install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Set up environment variables:
+   ```bash
+   cp .env.example .env.local
+   # Edit .env.local with your configuration
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Set up the database:
+   ```bash
+   cd apps/backend
+   diesel setup
+   diesel migration run
+   ```
 
-## Deploy on Vercel
+## 🏃 Development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Run both frontend and backend in separate terminals:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Terminal 1 - Frontend (Turbopack dev server):**
+```bash
+bun dev:web
+```
+
+**Terminal 2 - Backend (Rocket dev server):**
+```bash
+bun dev:backend
+```
+
+The frontend will be available at `http://localhost:3000`  
+The backend will be available at `http://localhost:8000`
+
+## 🔨 Building
+
+Build both applications:
+```bash
+bun build
+```
+
+Or build individually:
+```bash
+bun build:web      # Build Next.js app
+bun build:backend  # Build Rust binary
+```
+
+## 📦 Frontend Scripts
+
+```bash
+bun dev:web        # Start Turbopack dev server
+bun build:web      # Build production bundle
+bun start:web      # Start Next.js production server
+bun lint:web       # Run ESLint
+bun type-check:web # Run TypeScript type checking
+```
+
+## 🛠️ Backend Scripts
+
+```bash
+bun dev:backend    # Run Rocket dev server
+bun build:backend  # Build optimized Rust binary
+```
+
+## 📚 Tech Stack
+
+### Frontend
+- **Next.js 16** - React framework with server components
+- **Turbopack** - Next-generation bundler (default in Next.js 16)
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS
+- **React Router** - Client-side routing
+
+### Backend
+- **Rust** - Systems programming language
+- **Rocket** - Web framework
+- **Diesel** - ORM and query builder
+- **PostgreSQL** - Database
+
+### Development & Package Management
+- **Bun** - Fast all-in-one JavaScript runtime
+- **ESLint** - JavaScript linting
+- **Tailwind CSS** - Styling
+
+## 🔗 API Integration
+
+The frontend automatically proxies requests to `/api/*` to the backend. Configure the API URL in `.env.local`:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
+## 📝 Environment Variables
+
+See [.env.example](.env.example) for all available configuration options.
+
+## 🐛 Troubleshooting
+
+### Bun install fails
+```bash
+bun install --force
+```
+
+### Database connection issues
+Ensure PostgreSQL is running and the `DATABASE_URL` in `.env.local` is correct.
+
+### Port already in use
+Change the port in `apps/backend/Rocket.toml` or `apps/web/.env.local`.
+
+## 📄 License
+
+TBD

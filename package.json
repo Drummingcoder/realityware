@@ -1,0 +1,33 @@
+{
+	"name": "realityware-monorepo",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Reality Ware - Turbopack monorepo with Rust backend",
+	"workspaces": [
+		"apps/web"
+	],
+	"scripts": {
+		"dev:web": "bun --cwd apps/web dev",
+		"build:web": "bun --cwd apps/web build",
+		"start:web": "bun --cwd apps/web start",
+		"lint:web": "bun --cwd apps/web lint",
+		"type-check:web": "bun --cwd apps/web type-check",
+		"dev:backend": "cd apps/backend && cargo run",
+		"build:backend": "cd apps/backend && cargo build --release",
+		"dev": "echo 'Run: bun dev:web (in another terminal) && bun dev:backend'",
+		"build": "bun build:web && bun build:backend"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"@types/node": "^24.10.1",
+		"@types/react": "^19.2.5",
+		"@types/react-dom": "^19.2.3",
+		"typescript": "~5.9.3"
+	},
+	"engines": {
+		"bun": ">=1.0.0"
+	},
+	"dependencies": {
+		"@tailwindcss/postcss": "^4.1.18"
+	}
+}

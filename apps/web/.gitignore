@@ -32,7 +32,6 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
-Rocket.toml
 
 # vercel
 .vercel
@@ -40,11 +39,3 @@ Rocket.toml
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# rust
-/targetCargo.lock
-
-# bun
-bun.lockb
-apps/web/.next/
-apps/web/dist/
