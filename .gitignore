@@ -48,3 +48,6 @@ next-env.d.ts
 bun.lockb
 apps/web/.next/
 apps/web/dist/
+
+# turbo
+/.turbo
