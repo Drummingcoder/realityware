@@ -37,3 +37,32 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Using Bun
+
+- Install Bun (Linux/macOS):
+
+```bash
+curl -fsSL https://bun.sh/install | bash
+# restart your shell or source it so `bun` is on PATH
+```
+
+- Install dependencies and create a Bun lockfile:
+
+```bash
+bun install
+```
+
+- Run scripts with Bun:
+
+```bash
+bun run dev
+bun run build
+bun run start
+bun run lint
+```
+
+- Migrate from npm/yarn/pnpm:
+	- Remove `node_modules` and any `package-lock.json`/`yarn.lock`/`pnpm-lock.yaml` if present.
+	- Run `bun install` to generate `bun.lockb`.
+	- Use `bun add <pkg>` (or `bun add -d <pkg>` for dev deps) to add packages.
