@@ -6,7 +6,7 @@ diesel::table! {
         title -> Text,
         slug -> Nullable<Text>,
         owner_id -> Uuid,
-        contributor_ids -> Array<Nullable<Uuid>>,
+        contributor_ids -> Array<Uuid>,
         short_description -> Nullable<Text>,
         created_at -> Timestamptz,
     }
