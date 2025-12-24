@@ -28,7 +28,7 @@ model Project {
   title            String
   slug             String?
   ownerId          String    @map("owner_id") @db.Uuid
-  contributorIds   String[]  @map("contributor_ids") @db.Uuid
+  contributorIds   String[]  @default([]) @map("contributor_ids") @db.Uuid
   shortDescription String?   @map("short_description")
   createdAt        DateTime  @default(now()) @map("created_at") @db.Timestamptz
   

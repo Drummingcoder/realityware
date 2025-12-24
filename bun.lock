@@ -5,12 +5,12 @@
     "": {
       "name": "realityware",
       "devDependencies": {
-        "turbo": "latest",
-      },
+        "turbo": "latest"
+      }
     },
     "apps/backend": {
       "name": "backend",
-      "version": "0.0.0",
+      "version": "0.0.0"
     },
     "apps/web": {
       "name": "@realityware/web",
@@ -21,7 +21,7 @@
         "next": "16.0.10",
         "react": "19.2.0",
         "react-dom": "19.2.0",
-        "react-simplemde-editor": "^5.2.0",
+        "react-simplemde-editor": "^5.2.0"
       },
       "devDependencies": {
         "@tailwindcss/postcss": "^4",
@@ -31,8 +31,8 @@
         "eslint": "^9",
         "eslint-config-next": "16.0.1",
         "tailwindcss": "^4",
-        "typescript": "^5",
-      },
+        "typescript": "^5"
+      }
     },
     "packages/config": {
       "name": "@realityware/config",
@@ -41,21 +41,21 @@
         "@types/node": "^20",
         "eslint": "^9",
         "eslint-config-next": "16.0.1",
-        "typescript": "^5",
-      },
+        "typescript": "^5"
+      }
     },
     "packages/db": {
       "name": "@realityware/db",
       "version": "0.1.0",
       "dependencies": {
-        "@prisma/client": "^6.1.0",
+        "@prisma/client": "^6.1.0"
       },
       "devDependencies": {
         "@types/node": "^20",
         "prisma": "^6.1.0",
-        "typescript": "^5",
-      },
-    },
+        "typescript": "^5"
+      }
+    }
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
@@ -1154,6 +1154,6 @@
 
     "sharp/semver": ["semver@7.7.3", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q=="],
 
-    "@typescript-eslint/typescript-estree/minimatch/brace-expansion": ["brace-expansion@2.0.2", "", { "dependencies": { "balanced-match": "^1.0.0" } }, "sha512-Jt0vHyM+jmUBqojB7E1NIYadt0vI0Qxjxd2TErW94wDz+E2LAm5vKMXXwg6ZZBTHPuUlDgQHKXvjGBdfcF1ZDQ=="],
+    "@typescript-eslint/typescript-estree/minimatch/brace-expansion": ["brace-expansion@2.0.2", "", { "dependencies": { "balanced-match": "^1.0.0" } }, "sha512-Jt0vHyM+jmUBqojB7E1NIYadt0vI0Qxjxd2TErW94wDz+E2LAm5vKMXXwg6ZZBTHPuUlDgQHKXvjGBdfcF1ZDQ=="]
   }
 }
