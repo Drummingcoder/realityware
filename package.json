@@ -3,29 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "packageManager": "bun@latest",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "cd apps/web && bun run dev",
+    "build": "cd apps/web && bun run build",
+    "start": "cd apps/web && bun run start",
+    "lint": "cd apps/web && bun run lint",
+    "db:generate": "cd packages/db && bun run db:generate",
+    "db:push": "cd packages/db && bun run db:push",
+    "db:migrate": "cd packages/db && bun run db:migrate",
+    "db:studio": "cd packages/db && bun run db:studio"
   },
-  "dependencies": {
-    "color-thief-react": "^2.1.0",
-    "easymde": "^2.20.0",
-    "next": "16.0.10",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "react-simplemde-editor": "^5.2.0",
-    "realityware": "."
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.1",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+  "devDependencies": {}
 }

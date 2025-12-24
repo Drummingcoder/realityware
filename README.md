@@ -8,12 +8,6 @@ NOTE FROM YOUSSEF:
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
 bun dev
 ```
 
@@ -60,9 +54,8 @@ bun run dev
 bun run build
 bun run start
 bun run lint
-```
 
-- Migrate from npm/yarn/pnpm:
-	- Remove `node_modules` and any `package-lock.json`/`yarn.lock`/`pnpm-lock.yaml` if present.
-	- Run `bun install` to generate `bun.lockb`.
-	- Use `bun add <pkg>` (or `bun add -d <pkg>` for dev deps) to add packages.
+# when database is implemented
+bun run db:generate  # generates Prisma client
+bun run db:push      # pushes schema to DB
+```
