@@ -59,3 +59,5 @@ bun run lint
 bun run db:generate  # generates Prisma client
 bun run db:push      # pushes schema to DB
 ```
+
+You need to have PostgreSQL installed on your workspace beforehand
