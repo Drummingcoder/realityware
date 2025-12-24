@@ -21,7 +21,16 @@ node_modules/
 /build
 
 # Rust backend serves Next.js static export
-apps/backend/static
+apps/backend/static/
+
+# Rust backend specific ignores
+apps/backend/target/
+apps/backend/.cargo/config.toml
+apps/backend/Rocket.toml
+apps/backend/static/dev/
+apps/backend/static/_next/
+apps/backend/static/.next/
+apps/backend/static/node_modules/
 
 # misc
 .DS_Store

@@ -1,8 +1,0 @@
-target/
-.cargo/config.toml
-
-# Next.js build output
-static/dev/
-static/_next/
-static/.next/
-static/node_modules/
