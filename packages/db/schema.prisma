@@ -1,0 +1,78 @@
+generator client {
+  provider = "cargo prisma"
+  output   = "../rust-client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(uuid()) @db.Uuid
+  username      String
+  email         String   @unique
+  name          String?
+  tickets       Int      @default(0)
+  avatarUrl     String?  @map("avatar_url")
+  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz
+  
+  ownedProjects Project[] @relation("ProjectOwner")
+  orders        ShopOrder[]
+  
+  @@map("users")
+}
+
+model Project {
+  id               String    @id @default(uuid()) @db.Uuid
+  title            String
+  slug             String?
+  ownerId          String    @map("owner_id") @db.Uuid
+  contributorIds   String[]  @map("contributor_ids") @db.Uuid
+  shortDescription String?   @map("short_description")
+  createdAt        DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  
+  owner            User      @relation("ProjectOwner", fields: [ownerId], references: [id])
+  
+  @@map("projects")
+}
+
+model ShopItem {
+  id         String   @id @default(uuid()) @db.Uuid
+  title      String
+  priceCents Int      @map("price_cents")
+  currency   String
+  stock      Int?
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz
+  
+  orderItems ShopOrderItem[]
+  
+  @@map("shop_items")
+}
+
+model ShopOrder {
+  id         String   @id @default(uuid()) @db.Uuid
+  buyerId    String   @map("buyer_id") @db.Uuid
+  totalCents Int      @map("total_cents")
+  currency   String
+  status     String
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz
+  
+  buyer      User              @relation(fields: [buyerId], references: [id])
+  items      ShopOrderItem[]
+  
+  @@map("shop_orders")
+}
+
+model ShopOrderItem {
+  id            String @id @default(uuid()) @db.Uuid
+  orderId       String @map("order_id") @db.Uuid
+  shopItemId    String @map("shop_item_id") @db.Uuid
+  quantity      Int
+  unitPriceCents Int   @map("unit_price_cents")
+  
+  order         ShopOrder @relation(fields: [orderId], references: [id])
+  shopItem      ShopItem  @relation(fields: [shopItemId], references: [id])
+  
+  @@map("shop_order_items")
+}
