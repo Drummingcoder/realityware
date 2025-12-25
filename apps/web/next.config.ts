@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   output: "export",
-  distDir: "../backend/static",
+  distDir: "out",
   trailingSlash: true,
   images: {
     unoptimized: true, // Required for static export
@@ -32,6 +33,9 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+  },
+  turbopack: {
+    root: "",
   },
 };
 

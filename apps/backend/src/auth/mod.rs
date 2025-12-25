@@ -156,8 +156,6 @@ pub async fn callback(
     } else {
         // New user, create them
         let new_user_id = Uuid::new_v4();
-        // New user, create them
-        let new_user_id = Uuid::new_v4();
         let new_username = first_name.clone().unwrap_or_else(|| {
             primary_email
                 .split('@')
