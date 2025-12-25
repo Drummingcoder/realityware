@@ -1,3 +1,5 @@
+# Realityware
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Architecture
@@ -22,11 +24,37 @@ Next.js (Prisma) ──▶ PostgreSQL ◀── Rocket (Diesel)
 # Install Bun (if not installed)
 curl -fsSL https://bun.sh/install | bash
 
+# Install Rust and Cargo (if not installed)
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# Then restart your shell or run: source $HOME/.cargo/env
+
 # Install Diesel CLI
 cargo install diesel_cli --no-default-features --features postgres
 ```
 
-### 2. Database Setup (One Command)
+### 2. Install Dependencies
+
+```bash
+bun install
+```
+
+### 3. Database Setup (One Command)
+
+**If you need to start PostgreSQL:**
+```bash
+docker run -d --name realityware-postgres \
+  -e POSTGRES_PASSWORD=postgres \
+  -e POSTGRES_DB=dev \
+  -p 5433:5432 postgres:15
+```
+
+(If you need to remove it first when restarting, use docker rm -f realityware-postgres)
+
+Or if PostgreSQL is running elsewhere, edit `.env`:
+```bash
+DATABASE_URL="postgresql://user:pass@host:port/dbname"
+```
+Set up .env.example before doing this step
 
 ```bash
 ./scripts/setup-database.sh
@@ -39,25 +67,6 @@ This script will:
 4. Generate Diesel schema from database
 5. Verify both ORMs can connect
 
-**If you need to start PostgreSQL:**
-```bash
-docker run -d --name realityware-postgres \
-  -e POSTGRES_PASSWORD=postgres \
-  -e POSTGRES_DB=dev \
-  -p 5433:5432 postgres:15
-```
-
-Or if PostgreSQL is running elsewhere, edit `.env`:
-```bash
-DATABASE_URL="postgresql://user:pass@host:port/dbname"
-```
-
-### 3. Install Dependencies
-
-```bash
-bun install
-```
-
 ### 4. Run Development
 
 **Frontend (Next.js):**
@@ -67,7 +76,6 @@ cd apps/web && bun dev
 # → http://localhost:3000
 
 # Terminal 2: Backend  
-cd apps/backend && cargo run
 # → http://localhost:8000
 ```
 

@@ -3,7 +3,7 @@ use crate::db::schema::users::dsl::*;
 use crate::prelude::*;
 use crate::html_injection::inject_data_into_html;
 use diesel::prelude::*;
-use rocket::http::{Status, ContentType};
+use rocket::http::{Status/*, ContentType*/};
 use rocket::response::content::RawHtml;
 use uuid::Uuid;
 use serde::Serialize;

@@ -22,6 +22,7 @@ out/
 
 # Rust backend serves Next.js static export
 apps/backend/static/
+apps/web/out/
 
 # Rust backend specific ignores
 apps/backend/target/
@@ -43,7 +44,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
-.env*
+.env
 
 # vercel
 .vercel

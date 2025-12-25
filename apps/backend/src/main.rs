@@ -2,8 +2,8 @@
 extern crate rocket;
 use crate::auth::HCA;
 use crate::auth::{callback, slack_login};
-use rocket::fs::{FileServer, NamedFile};
-use rocket::http::Status;
+use rocket::fs::{/*FileServer,*/NamedFile};
+//use rocket::http::Status;
 use rocket_oauth2::OAuth2;
 use std::path::PathBuf;
 
