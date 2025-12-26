@@ -1,22 +1,20 @@
 # Realityware
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is the site for the Realityware YSWS event (upcoming). The premise is easy: Submit a hardware project that benefits society in some way, and win a grant to build it with a chance at more prizes!
 
-## Architecture
+## About the Website
+Realityware uses Next.js for the frontend and the lighter parts of the backend and Rust for the intensive parts of the backend.
 
-Realityware uses a **hybrid stack** where both frontend and backend share the same PostgreSQL database:
+For the database: Realityware uses a hybrid stack where both frontend and backend share the same PostgreSQL database:
 
 ```
 Next.js (Prisma) ──▶ PostgreSQL ◀── Rocket (Diesel)
    TypeScript           Database         Rust
 ```
 
-**Why both ORMs?**
-- **Prisma**: Easy TypeScript integration, great DX, quick prototyping
-- **Diesel**: High-performance Rust queries, compile-time safety, production backend
-- **Shared Database**: Both connect to the same PostgreSQL instance via `DATABASE_URL`
+Both front and backend are connected to the same database and are synced using the scripts in the scripts folder.
 
-## Quick Start
+## Development - Getting Started
 
 ### 1. Prerequisites
 
@@ -28,8 +26,14 @@ curl -fsSL https://bun.sh/install | bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # Then restart your shell or run: source $HOME/.cargo/env
 
+# Install PostgreSQL client libraries (required for Diesel CLI)
+sudo apt update
+sudo apt install postgresql-client libpq-dev
+
 # Install Diesel CLI
 cargo install diesel_cli --no-default-features --features postgres
+
+# Install the full Postgre if you run into trouble: sudo apt install postgresql postgresql-contrib
 ```
 
 ### 2. Install Dependencies
@@ -38,9 +42,18 @@ cargo install diesel_cli --no-default-features --features postgres
 bun install
 ```
 
-### 3. Database Setup (One Command)
+### 3. Set Up Environment
+First, make a copy of .env.example in the root folder in the same location and rename it 
+.env (it will be gitignored).
 
-**If you need to start PostgreSQL:**
+Second, if you're working on backend (or need to run it), go to the apps/backend folder and make a copy of the Rocket.toml.example and rename it Rocket.toml (again, it will be gitignored). Fill in the client_id, client_secret, and secret_key with the values from the previous file (the .env file).
+
+Third (again, if you're working on or setting up the backend), navigate to the .cargo folder (apps/backend/.cargo) and make a copy of the config.toml.example and rename it config.toml. Be sure to follow the instructions in there.
+
+### 4. Database Setup
+Fill in the OAUTH_CLIENT_ID, OAUTH_CLIENT_SECRET, and ROCKET_SECRET_KEY before starting the next steps. (the OAUTH here is coming from the Hack Club Auth, DM me (@Shadowlight) if you need the OAUTH stuff and don't want to get it yourself).
+
+**Start up PostgreSQL:**
 ```bash
 docker run -d --name realityware-postgres \
   -e POSTGRES_PASSWORD=postgres \
@@ -48,13 +61,17 @@ docker run -d --name realityware-postgres \
   -p 5433:5432 postgres:15
 ```
 
-(If you need to remove it first when restarting, use docker rm -f realityware-postgres)
+(If you need to restart it, use 
+```bash
+docker restart realityware-postgres
+```)
 
 Or if PostgreSQL is running elsewhere, edit `.env`:
 ```bash
 DATABASE_URL="postgresql://user:pass@host:port/dbname"
 ```
-Set up .env.example before doing this step
+
+Then run this script to set up the Prisma and Diesel databases (ensure that you're in the root directory):
 
 ```bash
 ./scripts/setup-database.sh
@@ -67,15 +84,27 @@ This script will:
 4. Generate Diesel schema from database
 5. Verify both ORMs can connect
 
-### 4. Run Development
-
-**Frontend (Next.js):**
+### 5. Run Development
+**Full Web App:**
 ```bash
-# Terminal 1: Frontend
-cd apps/web && bun dev
-# → http://localhost:3000
+# (from Root directory)
+bun run build
+bun run dev
+```
 
+**Frontend Setup**
+```bash
+# Terminal 1: Frontend (apps/web)
+bun run build
+bun dev
+# → http://localhost:3000
+```
+
+**Backend Setup**
+```bash
 # Terminal 2: Backend  
+cd apps/backend && cargo build
+cargo run
 # → http://localhost:8000
 ```
 
@@ -168,38 +197,10 @@ cd packages/db && npx prisma migrate reset
 
 # Sync schemas after pulling changes
 ./scripts/sync-schemas.sh prisma
-```
-
-### Type Mappings
-
-| PostgreSQL | Prisma | Diesel (Rust) |
-|-----------|---------|---------------|
-| UUID | `String @db.Uuid` | `Uuid` |
-| TEXT | `String` | `String` |
-| INTEGER | `Int` | `i32` |
-| TIMESTAMPTZ | `DateTime` | `DateTime<Utc>` |
-| BOOLEAN | `Boolean` | `bool` |
-| UUID[] | `String[]` | `Vec<Uuid>` |
-
-## Best Practices
-
-✅ **Use Prisma as source of truth** - Easier workflow, better DX  
-✅ **Always sync after migrations** - Run `./scripts/sync-schemas.sh`  
-✅ **Commit migrations to git** - Track schema changes  
-✅ **Test both ORMs** - Verify changes work on both sides  
-✅ **Use transactions** - For multi-table writes  
-
-❌ **Don't** run migrations from both tools without syncing  
-❌ **Don't** manually edit both schemas independently  
-❌ **Don't** use nullable UUID arrays (Diesel incompatibility)  
-
-## Troubleshooting
-
-**Schemas out of sync?**
-```bash
-./scripts/sync-schemas.sh prisma  # If Prisma is correct
 ./scripts/sync-schemas.sh diesel  # If Diesel is correct
 ```
+
+## Troubleshooting
 
 **Can't connect to database?**
 ```bash
@@ -229,7 +230,7 @@ npx prisma migrate deploy
 
 ```
 realityware/
-├── .env                           # Database connection (both ORMs)
+├── .env    # Database connection (both ORMs),
 ├── scripts/
 │   ├── setup-database.sh         # One-command setup
 │   ├── sync-schemas.sh           # Keep Prisma ↔ Diesel in sync
@@ -274,6 +275,13 @@ cd apps/web
 vercel deploy
 ```
 
+**Build Rust backend:**
+```bash
+cd apps/backend
+cargo build --release
+# Deploy binary to your hosting service
+```
+
 - Run scripts with Bun:
 
 ```bash
@@ -285,14 +293,6 @@ bun run lint
 # when database is implemented
 bun run db:generate  # generates Prisma client
 bun run db:push      # pushes schema to DB
-```
-
-You need to have PostgreSQL installed on your workspace beforehand
-
-# Build Rust backend
-cd apps/backend
-cargo build --release
-# Deploy binary to your hosting service
 ```
 
 **Database:**
