@@ -1,0 +1,20 @@
+{
+  "name": "@realityware/db",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./index.ts",
+  "scripts": {
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.2.0"
+  },
+  "devDependencies": {
+    "prisma": "^7.2.0",
+    "@types/node": "^20",
+    "typescript": "^5"
+  }
+}
