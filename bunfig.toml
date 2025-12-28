@@ -1,18 +1,4 @@
-[install]
-# Install mode - prefer the fastest choice
-mode = "auto"
-
-# Development dependencies are installed by default
-exact = false
-
-[build]
-# Link native modules when possible
-linking = "static"
-
 [run]
 # Environment variables for dev mode
 env = { NODE_ENV = "development" }
-
-[bun]
-# Ensure compatibility with Node.js
-smol = false
+bun = true
