@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link"; // Used for View Project button
 import { useState } from "react";
-import { useNotification } from "../../components/NotificationManager";
+import { useNotification } from "@/components/NotificationManager";
 import dynamic from "next/dynamic";
 import "easymde/dist/easymde.min.css";
 

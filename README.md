@@ -24,6 +24,7 @@ curl -fsSL https://bun.sh/install | bash
 
 # Install Rust and Cargo (if not installed)
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
 # Then restart your shell or run: source $HOME/.cargo/env
 
 # Install PostgreSQL client libraries (required for Diesel CLI)
@@ -37,6 +38,7 @@ cargo install diesel_cli --no-default-features --features postgres
 ```
 
 ### 2. Install Dependencies
+Don't forget to restart your terminal if necessary.
 
 ```bash
 bun install
