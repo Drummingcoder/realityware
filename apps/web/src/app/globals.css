@@ -2,17 +2,18 @@
 
 /* boom, updated this , but uh, might not be the theme we wanted, but we can always change this */
 :root {
-  --background: #ffffff; 
-  --foreground: #1C1C1C; 
-  --primary: #009236; 
-  --secondary: #a3e6a4; 
-  --neutral: #F3F3F3; 
-  --accent: #ff8127;
-  --lightaccent: #ff6c03;
+  --primary: #0CB463;
+  --secondary: #FF551F;
+  --tertiary: #3A5190;
+  --gray: #1C1C1C;
+  --background:#e7e7e7;
+
+
+
   /* --white: #ffffff;
   --black: #000000; */
 
-  --text-light: #78716c; 
+  /* --text-light: #78716c; 
   --text-dark: #1c1917;
   --border-light: #e7e5e4; 
   --border-dark: #a8a29e;
@@ -21,7 +22,7 @@
   --gray: #cfebe840;
   --purple: #cf5fd7;
   --lightblue: #18f6f9;
-  --red: #ff3c3c;
+  --red: #ff3c3c; */
 }
 
 
@@ -54,13 +55,13 @@ h2 {
 
 }
 h3 {
-  @apply text-2xl 
+  @apply text-3xl 
 }
 h4 {
-  @apply text-2xl font-semibold
+  @apply text-2xl
 }
 h5 {
-  @apply text-xl font-semibold
+  @apply text-xl
 }
 
 p {

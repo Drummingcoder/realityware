@@ -3,367 +3,124 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-export default function Home() {
-  const [faq1, showfaq1] = useState(false);
-  const [faq2, showfaq2] = useState(false);
-  const [faq3, showfaq3] = useState(false);
-  const [faq4, showfaq4] = useState(false);
-  const [faq5, showfaq5] = useState(false);
-  const [showTitle, setShowTitle] = useState(false);
+import Head from "next/head";
+import { NullTypes } from "@prisma/client/runtime/client";
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowTitle(window.scrollY > 200);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+export default function Home() { 
+  
+  const [showFaq, setShowFaq] = useState(null);
+
+  //For Nav bar
+  // const [showTitle, setShowTitle] = useState(false);
+
+
+  // const FAQ = ["Question", "Answer"];
+    const faq = [
+      { id: 1 , question: "Question1", answer: "Answer1"},
+      { id: 2, question: "Question2", answer: "Answer2" },
+      { id: 3, question: "Question3", answer: "Answer3" }
+    ];
 
   return (
     <>
-      {/* To be implemented once we're ready
-      <div className="fixed -top-1 right-0 z-50 max-width max-w-xs px-4 mt-8 text-center">
-        <a href="/signin" className="inline-block px-6 py-3 bg-black text-white rounded-lg shadow hover:opacity-90 transition">
-          Sign in with Slack!
-        </a>
-      </div> */}
-      <div className="min-h-screen items-center justify-center">
-        <header
-          className="mx-auto min-h-[20vh] w-full bg-background pt-[18vh] pb-[12vw]"
-          id="home"
-        >
-          {showTitle && (
-            <div className="fixed top-0 left-0 z-2 flex w-full items-center bg-background/80 py-2 text-left shadow backdrop-blur">
-              <span className="ml-[2vw] text-left font-bold text-[calc(2vw+2vh)] text-foreground">
-                Realityware
-              </span>
-              <div className="max-width z-50 max-w-xs px-[2vw]">
-                <Image
-                  src="/hackclublogo.png"
-                  alt="Hack Club logo"
-                  width={181}
-                  height={63}
-                  className="h-auto w-[calc(6vw+10vh)] object-contain"
-                />
-              </div>
-              <nav className="z-3 mr-[2vw] flex flex-1 flex-row items-center">
-                <ul className="ml-auto flex flex-row space-x-[3vw]">
-                  <li>
-                    <a
-                      href="#home"
-                      className="font-bold text-foreground text-lg underline transition hover:text-primary"
-                    >
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#about"
-                      className="font-bold text-foreground text-lg underline transition hover:text-primary"
-                    >
-                      About
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#faq"
-                      className="font-bold text-foreground text-lg underline transition hover:text-primary"
-                    >
-                      FAQ
-                    </a>
-                  </li>
-                </ul>
+      <Head>
+        <title>Realityware</title>
+        <meta name="description" content="The homepage for Realityware! Doesn't show up if logged in (to be implemented)" />
+      </Head>
+
+      
+        <main className="" id="home">
+          <section id="hero" className="min-h-[100lvh] bg-background bg-[url(/Tiles.png)] bg-blend-multiply flex flex-col items-center">
+            <header className="w-full">
+              <nav className="w-full flex flex-row items-center  py-4 px-6 gap-x-3">
+                <Image src="/hackclubflag.png" alt="Hack Club logo" width={120} height={50} className="object-contain w-20 h-auto grayscale" />
+                <h3>|</h3>
+                <h4>depot17</h4>
+                {/* todo: add depot17 logo */}
+
+                {/* <div className="p-2 px-6 rounded-full border-1 text-black"><p>LOGIN</p></div> */}
               </nav>
+            </header>
+
+          {/* rephrase to clarify ts hardware focused ^^ */}
+
+            <div className="grow"></div>
+            <Image src="/realityware.svg" alt ="" className="py-8 z-20" width={700} height={100} />
+          
+            <h3 className="font-semibold text-center max-w-[90%] ">Ship a solution to a real world problem, earn&nbsp;prizes </h3> 
+            {/* may need to rephrase the above, more emphasis on shipping a solution, less on prizes */}
+
+            <p className="text-center font-light">Ages 13-18. Starts <span className="underline">end of January.</span></p> 
+            
+            <div className="text-center space-y-6 z-10 pt-4">
+                <form name="rsvpForm" method="post" className="flex justify-between w-fit mx-auto gap-x-2">
+                  <input type="email" placeholder="e.g. your@email.com" className="bg-white text-lightgray p-4 w-100 box-border h-14 rounded-lg border-1 border-black"></input>
+
+                  <input type="submit" value="RSVP" className="text-black font-medium text-xl bg-secondary px-5 rounded-lg font-archivo"></input>
+                </form>
+              {/* <p className="mx-auto w-90 max-w-[80%] text-center text-white leading-snug">Ship a solution to a problem of society, get a grant to build it! You can also get prizes like 3D printers, Raspberry Pis, and stickers!
+              </p> */}
             </div>
-          )}
-          <div className="max-width absolute top-0 left-[38vw] z-50 max-w-xs px-[4vw]">
-            <Image
-              src="/flag-orpheus-top.png"
-              alt="Hack Club logo"
-              width={181}
-              height={63}
-              className="h-auto w-[calc(8vw+15vh)] object-contain"
-            />
-          </div>
-          <nav className="absolute top-0 right-[2vw] z-50 flex w-full flex-row items-center justify-end py-4">
-            <ul className="flex flex-row space-x-[4vw]">
-              <li>
-                <a
-                  href="#home"
-                  className="font-bold text-[calc(0.7vw+1.4vh)] text-foreground underline transition hover:text-accent"
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#about"
-                  className="font-bold text-[calc(0.7vw+1.4vh)] text-foreground underline transition hover:text-accent"
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#faq"
-                  className="font-bold text-[calc(0.7vw+1.4vh)] text-foreground underline transition hover:text-accent"
-                >
-                  FAQ
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div className="relative mb-[3vh] flex items-center justify-center">
-            <h1 className="flex-1 text-center font-bold text-[calc(6vw+6vh)] text-foreground">
-              Realityware
-            </h1>
-          </div>
-          <div className="flex justify-center">
-            <p className="whitespace-wrap mx-[2vw] mb-[2vh] inline-block text-center text-[calc(1.6vw+2vh)] text-primary">
-              Ship a solution to a problem of society, get a grant to build it!
-            </p>
-          </div>
-          <p className="mb-[8vh] text-center text-[calc(0.7vw+1.4vh)] text-secondary">
-            You can also get prizes like 3D printers, Raspberry Pis, and
-            stickers!
-          </p>
+            <div className="grow"></div>
 
-          <section className="mb-[8vh] flex justify-center space-y-4">
-            <a
-              className="inline-block rounded bg-lightaccent px-[3vw] py-[2.4vh] text-center text-[calc(0.9vw+1vh)] text-foreground text-white shadow-lg hover:bg-accent hover:opacity-80"
-              href="/gallery"
-            >
-              RSVP here!
-            </a>
-          </section>
-        </header>
+            </section>
 
-        <main className="mx-auto w-full bg-background p-8" id="about">
-          <section className="space-y-4">
-            {/* This can be worded better */}
-            <p className="mt-[4vh] block rounded px-[1vw] py-[2vh] text-center text-[calc(1.6vw+3.3vh)] text-primary underline">
-              Completing the YSWS
-            </p>
-          </section>
-          <section className="mt-[10vh] flex items-center justify-center portrait:flex-col">
-            <p className="inline-block h-[40vh] w-[25vw] overflow-y-auto rounded rounded-lg border border-[2vw] border-gray bg-secondary px-[1vw] py-[2vh] text-center text-[calc(0.9vw+1.2vh)] text-lightblack shadow-lg portrait:h-[25vh] portrait:w-[40vw]">
-              Step 1: Come up with an idea!{" "}
-              <span className="mt-[3vh] block text-justify text-[calc(0.6vw+0.9vh)]">
-                It can be anything, as well as a solution can be built for it!
-                The better your idea is to help society, the better reward you
-                will get!
-              </span>
-            </p>
-            <div className="h-[6vh] w-[8vw] flex-shrink-0 bg-lightblue portrait:h-[5vh] portrait:w-[3vw]"></div>
-            <p className="inline-block h-[40vh] w-[25vw] overflow-y-auto rounded rounded-lg border border-[2vw] border-gray bg-foreground px-[1vw] py-[2vh] text-center text-[calc(0.9vw+1.2vh)] text-white shadow-lg portrait:h-[25vh] portrait:w-[40vw]">
-              Step 2: Build your project!{" "}
-              <span className="mt-[3vh] block text-justify text-[calc(0.6vw+0.9vh)]">
-                Design your project! Plan it out, make a CAD, and design the
-                schematic! Then, create the code that your project would run on,
-                and put it on GitHub!
-              </span>
-            </p>
-            <div className="h-[6vh] w-[8vw] flex-shrink-0 bg-lightblue portrait:h-[5vh] portrait:w-[3vw]"></div>
-            <p className="inline-block h-[40vh] w-[25vw] overflow-y-auto rounded rounded-lg border border-[2vw] border-gray bg-primary px-[1vw] py-[2vh] text-center text-[calc(0.9vw+1.2vh)] text-white shadow-lg portrait:h-[25vh] portrait:w-[40vw]">
-              Step 3: Create your BOM!{" "}
-              <span className="mt-[3vh] block text-justify text-[calc(0.6vw+0.9vh)]">
-                Simply list out all the components and materials you will need
-                to create your project. We will use this BOM to give you an
-                appropriate grant!
-              </span>
-            </p>
-          </section>
-          <section className="flex h-[28vh] portrait:h-[5vh]">
-            <div className="absolute right-[16vw] z-0 h-[9vh] w-[3vw] flex-shrink-0 rounded-b-full bg-lightblue portrait:right-[48vw] portrait:h-[6vh]"></div>
-            <div className="absolute right-[16vw] z-1 mt-[4vh] h-[6vh] w-[52vw] flex-shrink-0 rounded-full bg-lightblue portrait:hidden"></div>
-            <div className="absolute right-[65vw] mt-[4vh] h-[24vh] w-[3vw] flex-shrink-0 rounded-t-full bg-lightblue portrait:hidden"></div>
-            <div className="absolute right-[32vw] mt-[4vh] h-[24vh] w-[3vw] flex-shrink-0 rounded-t-full bg-red portrait:hidden"></div>
-          </section>
-          <section className="flex items-center justify-center portrait:flex-col">
-            <p className="z-1 inline-block h-[40vh] w-[25vw] overflow-y-auto rounded rounded-lg border border-[2vw] border-gray bg-blue-900 px-[1vw] py-[2vh] text-center text-[calc(0.9vw+1.2vh)] text-white shadow-lg portrait:h-[25vh] portrait:w-[40vw]">
-              Optional: Make a PCB layout!{" "}
-              <span className="mt-[3vh] block text-justify text-[calc(0.6vw+0.9vh)]">
-                For a chance at bigger rewards, create a PCB design for your
-                project! This will become a part of your grant.
-              </span>
-            </p>
-            <div className="h-[6vh] w-[8vw] flex-shrink-0 bg-lightblue portrait:h-[5vh] portrait:w-[3vw]"></div>
-            <p className="inline-block h-[40vh] w-[25vw] overflow-y-auto rounded rounded-lg border border-[2vw] border-gray bg-purple px-[1vw] py-[2vh] text-center text-[calc(0.9vw+1.2vh)] text-lightblack shadow-lg portrait:h-[25vh] portrait:w-[40vw]">
-              Step 4: Ship it!{" "}
-              <span className="mt-[3vh] block text-justify text-[calc(0.6vw+0.9vh)]">
-                Once you're finished, ship it to us! We'll rate your project and
-                give you a grant to build it.
-              </span>
-            </p>
-          </section>
-          <section className="flex h-[28vh] portrait:h-[8vh]">
-            <div className="absolute right-[32vw] h-[10vh] w-[3vw] flex-shrink-0 rounded-b-full bg-lightblue portrait:right-[48vw]"></div>
-            <div className="absolute right-[32vw] z-1 mt-[4vh] h-[6vh] w-[18vw] flex-shrink-0 rounded-full bg-lightblue portrait:hidden"></div>
-            <div className="absolute right-[48vw] mt-[4vh] h-[24vh] w-[3vw] flex-shrink-0 rounded-t-full bg-lightblue portrait:hidden"></div>
-          </section>
-          <section className="flex items-center justify-center gap-[10vw]">
-            <p className="z-1 inline-block h-[40vh] w-[25vw] overflow-y-auto rounded rounded-lg border border-[2vw] border-gray bg-yellow-500 px-[1vw] py-[2vh] text-center text-[calc(0.9vw+1.2vh)] text-lightblack shadow-lg portrait:h-[25vh] portrait:w-[40vw]">
-              Step 5: Use your grant to build your project!
-              <span className="mt-[3vh] block text-justify text-[calc(0.6vw+0.9vh)]">
-                The project isn't finished until it's up and working! You can
-                win even more prizes by doing so!
-              </span>
-            </p>
-          </section>
+            <section className="px-8 lg:px-20 xl:px-30 bg-secondary flex flex-col items-center justify-center py-10" id="faq">
+              <h2 className="mb-10">FAQ</h2>
 
-          <section
-            className="max-width mt-[18vh] flex items-center justify-center"
-            id="faq"
-          >
-            <div className="relative h-auto w-[67vw] rounded border border-[0.25vw] border-black bg-white pb-[2vh] shadow-lg [clip-path:polygon(0%_0%,calc(100%-6vw)_0%,100%_6vw,100%_100%,0%_100%)]">
-              <div className="-top-[0.25vw] -right-[0.25vw] pointer-events-none absolute">
-                <div className="h-[6vw] w-[6vw] border-[0.25vw] border-black"></div>
+            
+              <div className="relative bg-white pb-[2vh] w-full lg:max-w-[67vw] h-auto border border-black border-2 shadow-lg rounded [clip-path:polygon(0%_0%,calc(100%-6vw)_0%,100%_6vw,100%_100%,0%_100%)] pt-8 sm:pt-20 lg:pt-30 px-4 md:px-8 xl:px-20 ">
+                <div className="absolute -top-1 -right-1 pointer-events-none ">
+                  <div className="w-[6vw] h-[6vw] border-2 border-black"></div>
+                </div>
+
+              {faq.map(item => (
+
+                <div key={item.id} >
+
+                <div className="flex justify-between items-center pt-2">
+                  <p className="text-lightblack">
+                    {item.question}
+                  </p>
+                  <span className={`transition-transform duration-200 inline-block ${
+                      showFaq === item.id ? "rotate-90" : ""
+                    }`}>
+                    
+                    <span className="inline-block w-0 h-0 border-t-[1vw] border-t-transparent border-b-[1vw] border-b-transparent border-l-[1vw] border-l-black cursor-pointer" 
+                    onClick={() => setShowFaq(showFaq === item.id ? null : item.id)}></span>
+                    
+                  </span>    
+                
+                </div>
+                
+                {showFaq === item.id && (
+                  <p className="text-lightblack pl-2 transition-all duration-300 text-textlight">
+                    {item.answer}
+                  </p>
+                )}
+                <hr className="w-full mt-2"/>
+                
+                </div>
+                  ))}
+
               </div>
-              <p className="relative mt-[2vh] text-center text-[calc(2vw+2vh)] underline">
-                Frequently Asked Questions
-              </p>
-              <p
-                className="mt-[6vh] ml-[2vw] cursor-pointer text-[calc(1.2vw+1vh)] text-lightblack"
-                onClick={() => showfaq1((v) => !v)}
-              >
-                When will the YSWS start?
-                <span
-                  className={`absolute right-[2.5vw] inline-block transition-transform duration-200 ${
-                    faq1 ? "rotate-90" : ""
-                  }`}
-                >
-                  <span className="inline-block h-0 w-0 border-t-[1vw] border-t-transparent border-b-[1vw] border-b-transparent border-l-[1vw] border-l-black"></span>
-                </span>
-              </p>
+              
+              <a className="block mt-10 mx-auto w-fit text-black font-semibold text-xl bg-lightaccent px-5 rounded-lg py-3 border-2 border-black" href="https://hackclub.slack.com/docs/T0266FRGM/F09S78K5M1P">LEARN MORE</a>
 
-              {faq1 && (
-                <p className="mt-[4vh] ml-[2vw] text-[calc(0.8vw+0.8vh)] text-lightblack text-textlight transition-all duration-300">
-                  Around late December or early January!
-                </p>
-              )}
-              <hr className="mx-auto mt-[1vh] w-[63vw]" />
-              <p
-                className="mt-[6vh] ml-[2vw] cursor-pointer text-[calc(1.2vw+1vh)] text-lightblack"
-                onClick={() => showfaq2((v) => !v)}
-              >
-                Any special gimmicks?
-                <span
-                  className={`absolute right-[2.5vw] inline-block transition-transform duration-200 ${
-                    faq2 ? "rotate-90" : ""
-                  }`}
-                >
-                  <span className="inline-block h-0 w-0 border-t-[1vw] border-t-transparent border-b-[1vw] border-b-transparent border-l-[1vw] border-l-black"></span>
-                </span>
-              </p>
+            </section>
+          </main>
 
-              {faq2 && (
-                <p className="mt-[4vh] ml-[2vw] text-[calc(0.8vw+0.8vh)] text-lightblack text-textlight transition-all duration-300">
-                  You will be placed into a city (out of 4 cities), and you must
-                  complete scenarios with your city to earn more points!
-                </p>
-              )}
-              <hr className="mx-auto mt-[1vh] w-[63vw]" />
-              <p
-                className="mt-[6vh] ml-[2vw] cursor-pointer text-[calc(1.2vw+1vh)] text-lightblack"
-                onClick={() => showfaq3((v) => !v)}
-              >
-                Placeholder 1
-                <span
-                  className={`absolute right-[2.5vw] inline-block transition-transform duration-200 ${
-                    faq3 ? "rotate-90" : ""
-                  }`}
-                >
-                  <span className="inline-block h-0 w-0 border-t-[1vw] border-t-transparent border-b-[1vw] border-b-transparent border-l-[1vw] border-l-black"></span>
-                </span>
-              </p>
+          <footer className="bg-neutral w-full p-10 mx-auto items-center justify-center flex">
+            <section className="flex flex-col items-center gap-y-2 text-center">
+              <Image src="/realityware.svg" alt="" width={100} height={60} />
+              <p className="">Built with love for teenagers, by teenagers! View this website's <a href="https://github.com/Drummingcoder/realityware-site" className="text-blue-900 underline">source code</a> and join our <a href="https://hackclub.com/slack/" className="text-blue-900 underline">Slack!</a></p>
 
-              {faq3 && (
-                <p className="mt-[4vh] ml-[2vw] text-[calc(0.8vw+0.8vh)] text-lightblack text-textlight transition-all duration-300">
-                  Still working on the FAQ!
-                </p>
-              )}
-              <hr className="mx-auto mt-[1vh] w-[63vw]" />
-              <p
-                className="mt-[6vh] ml-[2vw] cursor-pointer text-[calc(1.2vw+1vh)] text-lightblack"
-                onClick={() => showfaq4((v) => !v)}
-              >
-                Placeholder 2
-                <span
-                  className={`absolute right-[2.5vw] inline-block transition-transform duration-200 ${
-                    faq4 ? "rotate-90" : ""
-                  }`}
-                >
-                  <span className="inline-block h-0 w-0 border-t-[1vw] border-t-transparent border-b-[1vw] border-b-transparent border-l-[1vw] border-l-black"></span>
-                </span>
-              </p>
-
-              {faq4 && (
-                <p className="mt-[4vh] ml-[2vw] text-[calc(0.8vw+0.8vh)] text-lightblack text-textlight transition-all duration-300">
-                  Still working on the FAQ!
-                </p>
-              )}
-              <hr className="mx-auto mt-[1vh] w-[63vw]" />
-              <p
-                className="mt-[6vh] ml-[2vw] cursor-pointer text-[calc(1.2vw+1vh)] text-lightblack"
-                onClick={() => showfaq5((v) => !v)}
-              >
-                Placeholder 3
-                <span
-                  className={`absolute right-[2.5vw] inline-block transition-transform duration-200 ${
-                    faq5 ? "rotate-90" : ""
-                  }`}
-                >
-                  <span className="inline-block h-0 w-0 border-t-[1vw] border-t-transparent border-b-[1vw] border-b-transparent border-l-[1vw] border-l-black"></span>
-                </span>
-              </p>
-
-              {faq5 && (
-                <p className="mt-[4vh] ml-[2vw] text-[calc(0.8vw+0.8vh)] text-lightblack text-textlight transition-all duration-300">
-                  Still working on the FAQ!
-                </p>
-              )}
-              <hr className="mx-auto mt-[1vh] w-[63vw]" />
-            </div>
-          </section>
-
-          <section className="mt-[4vh] mb-[5vh] flex items-center justify-center">
-            <a
-              className="block flex h-[16vh] w-[22vw] items-center justify-center rounded rounded rounded-full bg-accent px-[1vw] py-[2vh] text-center text-[calc(0.73vw+1vh)] text-white"
-              href="https://hackclub.slack.com/docs/T0266FRGM/F09S78K5M1P"
-            >
-              To learn more, read our full FAQ here!
-            </a>
-          </section>
-        </main>
-
-        <footer className="mx-auto flex w-full items-center justify-center bg-neutral p-[4vh]">
-          <section className="space-y-4">
-            <p className="block rounded px-[1vw] py-[2vh] text-[calc(0.9vw+1vh)] text-foreground">
-              Built with love by members of{" "}
-              <a
-                href="https://hackclub.com/"
-                className="text-blue-900 underline"
-              >
-                Hack Club
-              </a>
-              ! View this website's{" "}
-              <a
-                href="https://github.com/Drummingcoder/realityware-site"
-                className="text-blue-900 underline"
-              >
-                source code
-              </a>{" "}
-              and join our{" "}
-              <a
-                href="https://hackclub.com/slack/"
-                className="text-blue-900 underline"
-              >
-                Slack!
-              </a>
-            </p>
-          </section>
-        </footer>
-      </div>
-    </>
-  );
-}
+              <div className="flex gap-4 w-full justify-center ">
+                <a href="https://hackclub.com" className="text-blue-900 underline">Hack Club</a>
+                <a href="https://www.depot17.com" className="text-blue-900 underline">Depot17</a>
+              </div>
+            </section>
+          </footer>
+      </>
+    );
+  }
