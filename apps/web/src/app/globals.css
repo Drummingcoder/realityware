@@ -13,9 +13,9 @@
   /* --white: #ffffff;
   --black: #000000; */
 
-  /* --text-light: #78716c; 
+  /* --text-light: #78716c;
   --text-dark: #1c1917;
-  --border-light: #e7e5e4; 
+  --border-light: #e7e5e4;
   --border-dark: #a8a29e;
   --card-background: #ffffff;
   --lightblack: #242222;
@@ -55,7 +55,7 @@ h2 {
 
 }
 h3 {
-  @apply text-3xl 
+  @apply text-3xl
 }
 h4 {
   @apply text-2xl
